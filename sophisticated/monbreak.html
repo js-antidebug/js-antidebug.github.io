@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>MonBreak</title>
+    <script>
+//================
+addEventListener("load", () => {
+    var threshold = 500;
+    const measure = () => {
+        const start = performance.now();
+        debugger;
+        const time = performance.now() - start;
+        if (time > threshold) {
+            document.write("<p>DevTools were open since page load</p>");
+        }
+    }
+    setInterval(measure, 300);
+});
+//==============
+    </script>
+	</head>
+	<body>
+        <main role="main" class="container">
+        <div class="jumbotron">
+            <h1>MonBreak</h1>
+            <p><b>Description:</b>
+            This technique detects the opening of the DevTools by constantly check the time before and after a breakpoint. If the breakpoint is hit (which are enabled by default) we know that the DevTools must be open. The static threshold might not work well on all devices and the technique might also report a false positive if you switch to another tab.</p>
+
+            <p><b>Experiment:</b>
+            Open the DevTools and resume execution at least once at the breakpoint, then close the DevTools again.</p>
+
+            <p><b>Impact:</b>
+            This technique could also be abused to modify the content and script behavior on-the-fly only for people trying to analyze the website. However, the breakpoint might be suspicious.</p>
+        </div>
+        </main>
+  </body>
+</html>

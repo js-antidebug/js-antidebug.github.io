@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>ModBuilt</title>
+    <script>
+//================
+//JSON.stringify
+let originalStringify = JSON.stringify;
+JSON.stringify = function(obj) {
+    if (typeof obj != "object") {
+        return originalStringify(obj);
+    }
+    //Not recursive, just a simple example
+    let newObj = {}
+    for (let key of Object.keys(obj)) {
+        if (typeof obj[key] == "string") {
+            newObj[key] = obj[key].replace("shellcode", "benign code").replace("want to hide", "do not want to hide");
+        }
+        else {
+            newObj[key] = obj[key];
+        }
+    }
+    return originalStringify(newObj);
+}
+//Example
+let obj = { foo: "foo", bar: "bar", str: "this strings contains shellcode that we want to hide"};
+console.log(JSON.stringify(obj));
+
+//console.log
+let originalLog = console.log;
+console.log = function(arg) {
+    arg = arg.replace("shellcode", "benign code").replace("want to hide", "do not want to hide");
+    originalLog(arg);
+}
+//Example
+let str = "this strings contains shellcode that we want to hide";
+console.log(str);
+//================
+    </script>
+	</head>
+	<body>
+        <main role="main" class="container">
+        <div class="jumbotron">
+            <h1>ModBuilt</h1>
+            <p><b>Description:</b>
+            In general, this technique modifies built-in functions to make them behave differently than expected. This example changes the behavior of `console.log` and `JSON.parse` to modify some strings on the fly.</p>
+
+            <p><b>Experiment:</b>
+            Inspect the code, then open the DevTools and check the console logs to see what the output actually looks like. Try to log the forbidden word via `console.log("shellcode")`.</p>
+
+            <p><b>Impact:</b>This technique can be quite effective, as it stealthily modifies analysis results without making itself easily noticeable (as compared to a breakpoint). While this example is rather simple, overwriting the built-in toString function can be used to hide arbitrary objects and functions from inspection.</p>
+        </div>
+        </main>
+  </body>
+</html>

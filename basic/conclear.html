@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>ConClear</title>
+    <script>
+//================
+function clear() {
+    console.clear();
+    setTimeout(clear, 10);
+}
+clear();
+//================
+    </script>
+	</head>
+	<body>
+        <main role="main" class="container">
+        <div class="jumbotron">
+            <h1>ConClear</h1>
+
+            <p><b>Description:</b>
+            This technique will constantly clear the console, making it harder to debug JavaScript code via console.log and similar functions.
+
+            <p><b>Experiment:</b>
+            Just open the DevTools.
+
+            <p><b>Impact:</b>
+            As it can be circumvented by setting the "Preserve log" function, its impact is only minor.
+        </div>
+        </main>
+  </body>
+</html>

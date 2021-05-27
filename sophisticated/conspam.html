@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>ConSpam</title>
+    <script>
+//================
+var baseline;
+function measure() {
+    const start = performance.now();
+    for (let i = 0; i < 100; i++) {
+        console.log(i);
+        console.clear();
+    }
+    const time = performance.now() - start;
+    if (baseline === undefined) {
+        baseline = time;
+    }
+    else if (time > baseline * 2) {
+        document.write("DevTools were opened");
+        return;
+    }
+    setTimeout(measure, 1000);
+}
+measure();
+//==============
+    </script>
+	</head>
+	<body>
+        <main role="main" class="container">
+        <div class="jumbotron">
+            <h1>ConSpam</h1>
+            <p><b>Description:</b>
+            Opening the DevTools slows down the console, triggering this technique. This specific implementation calculates a baseline and thus only works if they are not open from the beginning already.</p>
+
+            <p><b>Experiment:</b>
+            Open the DevTools after the page has loaded. </p>
+
+            <p><b>Impact:</b>
+            As with previous techniques, this one could be abused to hide client-side attacks.</p>
+        </div>
+        </main>
+  </body>
+</html>

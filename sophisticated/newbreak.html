@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>NewBreak</title>
+    <script>
+//==============
+function example() {
+    let foo = 2; // <---------- Set a breakpoint here
+}
+setInterval(example, 500);
+//==============
+var timeSinceLast;
+addEventListener("load", () => {
+    var threshold = 1000;
+    const measure = () => {
+        if (!timeSinceLast) {
+            timeSinceLast = performance.now();
+        }
+        const diff = performance.now() - timeSinceLast;
+        if (diff > threshold) {
+            document.write("<p>A breakpoint was hit</p>");
+        }
+        timeSinceLast = performance.now();
+    }
+    setInterval(measure, 300);
+});
+//==============
+    </script>
+	</head>
+	<body>
+        <main role="main" class="container">
+        <div class="jumbotron">
+            <h1>NewBreak</h1>
+            <p><b>Description:</b>
+            This technique is basically the opposite of MonBreak: it detects if someone opens the DevTools and then sets a breakpoint.</p>
+
+            <p><b>Experiment:</b>
+            Open the DevTools and then set a breakpoint, e.g. in the `example()` function.</p>
+
+            <p><b>Impact:</b>
+            This technique is more stealthy than MonBreak, but on the other hand useless unless somebody sets a breakpoint. As with previous techniques that detect the DevTools/debugger, this could be abused to make the website behave differently under analysis</p>
+        </div>
+        </main>
+  </body>
+</html>

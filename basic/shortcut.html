@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>ShortCut</title>
+    <script>
+//================
+window.addEventListener('keydown', function(event){ 
+    console.log(event);
+    if (event.key == "F12" || ((event.ctrlKey || event.altKey) && (event.code == "KeyI" || event.key == "KeyJ" || event.key == "KeyU"))) {
+        event.preventDefault(); 
+        return false;
+    }
+});
+window.addEventListener('contextmenu', function(event){ 
+    event.preventDefault();
+    return false;
+});
+//================
+    </script>
+	</head>
+	<body>
+        <main role="main" class="container">
+        <div class="jumbotron">
+            <h1>ShortCut</h1>
+
+            <p><b>Description:</b>
+            This technique disables the shortcuts F12, Ctrl+Shift+I, Ctrl+Shift+J, and Ctrl+U as well as right-clicking.</p>
+
+            <p><b>Experiment:</b>
+            Try to open the DevTools or to view the source.</p>
+
+            <p><b>Impact:</b>This is the most basic technique and has the least impact, as it is so simple to circumvent. Opening the DevTools through the hamburger menu, or opening them before loading the page still works.</p>
+        </div>
+        </main>
+  </body>
+</html>

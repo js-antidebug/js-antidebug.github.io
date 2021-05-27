@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>LogGet</title>
+    <script>
+//================
+let check = function() {
+    var devtools = function(){};
+    devtools.toString = function() {
+        this.opened = true;
+    }
+    console.log('%c', devtools);
+    if (devtools.opened) {
+        document.write("This technique is broken since Chrome 77. Only included for historical reasons");
+    }
+}
+setTimeout(check, 300);
+//==============
+    </script>
+	</head>
+	<body>
+        <main role="main" class="container">
+        <div class="jumbotron">
+            <h1>LogGet</h1>
+            <p><b>Description:</b>
+            This technique detects the opening of the DevTools by writing special values to the console. This implementation worked at time of publication of this testbed, however LogGet is prone to break and we also included two variants that previously worked. Code taken from <a href="https://stackoverflow.com/questions/7798748/find-out-whether-chrome-console-is-open/48287643">StackOverflow</a>.
+
+            <p><b>Experiment:</b>
+            Open the DevTools after the page has loaded and see what happens to the content. (Will most likely not work with your browser!)</p>
+
+            <p><b>Impact:</b>
+            This technique is a bit more robust than the previous WidthDiff technique in detecting whether the DevTools are currently open. However, it is also more noisy by requiring to log objects to the console. Therefore, it is best combined with the ConClear technique.</p>
+        </div>
+        </main>
+  </body>
+</html>
